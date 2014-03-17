@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block body %}
+	{% for category in menu %}
+		<div>
+			<h4>Category: {{ category.name }}</h4>
+			{% for item in category.children %}
+			<div>{{ item.name }} [{{ item.price }}] -- {{ item.id }} ({{ item.is_orderable }})</div>
+			{% endfor %}
+		</div>
+	{% endfor %}
+{% endblock body %}
