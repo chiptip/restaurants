@@ -1,12 +1,49 @@
 {% extends "base.html" %}
 
 {% block body %}
+<div class="swiper-container">
+	<div class="swiper-wrapper">
 	{% for category in menu %}
-		<div>
+		<div class="swiper-slide"> 
 			<h4>Category: {{ category.name }}</h4>
 			{% for item in category.children %}
 			<div>{{ item.name }} [{{ item.price }}] -- {{ item.id }} ({{ item.is_orderable }})</div>
 			{% endfor %}
 		</div>
 	{% endfor %}
+	</div>
+</div>
 {% endblock body %}
+
+{% block additional_js %}
+<script type="text/javascript">
+/*======
+Use document ready or window load events
+For example:
+With jQuery: $(function() { ...code here... })
+Or window.onload = function() { ...code here ...}
+Or document.addEventListener('DOMContentLoaded', function(){ ...code here... }, false)
+=======*/
+
+window.onload = function() {
+  var mySwiper = new Swiper('.swiper-container',{
+    //Your options here:
+    mode:'horizontal',
+    loop: true
+    //etc..
+  });  
+}
+
+/*
+Or with jQuery/Zepto
+*/
+// $(function(){
+//   var mySwiper = $('.swiper-container').swiper({
+//     //Your options here:
+//     mode:'horizontal',
+//     loop: true
+//     //etc..
+//   });
+// })
+</script>
+{% endblock additional_js %}
